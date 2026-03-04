@@ -131,8 +131,8 @@ a{color:inherit; text-decoration:none}
   .quickGrid{grid-template-columns: 1fr;}
 }
 .logoImg{
-  width:104px;
-  height:104px;
+  width:90px;
+  height:90px;
   border-radius:18px;
   object-fit: cover;
 
