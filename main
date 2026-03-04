@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Jurnal</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">J</div>
+      <div>
+        <div class="appname">Jurnal</div>
+        <div class="subtitle">Notează-ți ziua. Învață din trend.</div>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <a href="index.html" class="navlink active">Acasă</a>
+      <a href="new.html" class="navlink">Adaugă</a>
+      <a href="history.html" class="navlink">Istoric</a>
+      <a href="stats.html" class="navlink">Statistici</a>
+      <a href="settings.html" class="navlink">Setări</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <h1>Dashboard</h1>
+        <p class="muted">
+          Azi este <span id="todayLabel">—</span>. Scrie 2 minute și ai făcut progres.
+        </p>
+      </div>
+
+      <div class="heroActions">
+        <a class="btn primary" href="new.html" id="primaryCta">+ Adaugă entry-ul de azi</a>
+        <a class="btn" href="history.html">Vezi istoricul</a>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <div class="cardTop">
+          <h2>Streak</h2>
+          <span class="pill" id="streakPill">0 zile</span>
+        </div>
+        <p class="big" id="streakValue">0</p>
+        <p class="muted">Zile consecutive completate.</p>
+      </article>
+
+      <article class="card">
+        <div class="cardTop">
+          <h2>Entry azi</h2>
+          <span class="pill" id="todayStatusPill">Necunoscut</span>
+        </div>
+        <p class="big" id="todayStatusText">—</p>
+        <p class="muted">Ai completat sau nu pentru data de azi.</p>
+      </article>
+
+      <article class="card">
+        <div class="cardTop">
+          <h2>Media 7 zile</h2>
+          <span class="pill" id="avgPill">—</span>
+        </div>
+        <p class="big" id="avgValue">—</p>
+        <p class="muted">Media notelor pe ultimele 7 zile.</p>
+      </article>
+
+      <article class="card">
+        <div class="cardTop">
+          <h2>Ultima notă</h2>
+          <span class="pill" id="lastDatePill">—</span>
+        </div>
+        <p class="big" id="lastScore">—</p>
+        <p class="muted">Ultimul entry salvat.</p>
+      </article>
+    </section>
+
+    <section class="card quick">
+      <div>
+        <h2>Quick actions</h2>
+        <p class="muted">Ce vrei să faci acum?</p>
+      </div>
+
+      <div class="quickGrid">
+        <a class="quickBtn" href="new.html">
+          <div class="quickTitle">Adaugă azi</div>
+          <div class="quickDesc">Notă + text + aspirații</div>
+        </a>
+        <a class="quickBtn" href="history.html">
+          <div class="quickTitle">Istoric</div>
+          <div class="quickDesc">Caută, editează, filtrează</div>
+        </a>
+        <a class="quickBtn" href="stats.html">
+          <div class="quickTitle">Statistici</div>
+          <div class="quickDesc">Grafic note + medii</div>
+        </a>
+        <a class="quickBtn" href="settings.html">
+          <div class="quickTitle">Setări</div>
+          <div class="quickDesc">Export / import / tema</div>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span class="muted">© <span id="year">—</span> Jurnal</span>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
