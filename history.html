@@ -1,1 +1,67 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Istoric • myJurnal</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <!-- Dacă ai logo cu poză -->
+      <img class="logoImg" src="Sasha.jpg" alt="Sasha" />
+      <div>
+        <div class="appname">myJurnal</div>
+        <div class="subtitle">Notează-ți ziua. Învață din trend.</div>
+      </div>
+    </div>
 
+    <nav class="nav">
+      <a href="index.html" class="navlink">Acasă</a>
+      <a href="new.html" class="navlink">Adaugă</a>
+      <a href="history.html" class="navlink active">Istoric</a>
+      <a href="stats.html" class="navlink">Statistici</a>
+      <a href="settings.html" class="navlink">Setări</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <h1>Istoric</h1>
+        <p class="muted">Aici vezi toate zilele salvate. Poți căuta și șterge.</p>
+      </div>
+
+      <div class="heroActions">
+        <a class="btn primary" href="new.html">+ Adaugă entry</a>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="historyToolbar">
+        <input id="searchInput" class="input" type="text" placeholder="Caută în text / aspirații / dată (ex: 2026-03)..." />
+        <select id="sortSelect" class="select">
+          <option value="newest">Cele mai noi</option>
+          <option value="oldest">Cele mai vechi</option>
+          <option value="score_desc">Notă: mare → mic</option>
+          <option value="score_asc">Notă: mic → mare</option>
+        </select>
+        <button id="clearBtn" class="btn">Reset</button>
+      </div>
+
+      <div id="emptyState" class="emptyState" style="display:none;">
+        <div class="muted">Nu ai niciun entry încă. Apasă „Adaugă entry”.</div>
+      </div>
+
+      <div id="historyList" class="historyList"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span class="muted">© <span id="year">—</span> FlorEn • All rights reserved</span>
+  </footer>
+
+  <script src="history.js"></script>
+</body>
+</html>
