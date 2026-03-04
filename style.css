@@ -24,7 +24,7 @@ a{color:inherit; text-decoration:none}
 
 .topbar{
   display:flex; gap:22px; align-items:center; justify-content:space-between;
-  padding:60px 72px;           /* <-- mai mare */
+  padding:45px 60px;           /* <-- mai mare */
   border-bottom:1px solid var(--border);
   background: rgba(10,12,16,0.7);
   backdrop-filter: blur(10px);
