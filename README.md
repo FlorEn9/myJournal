@@ -1,0 +1,1 @@
+V ati intrebat vreodata cum sa iti maxezi progresul de la zi la zi,ei bine eu sigur m am gandit si am venit cu ideea acestui site.Site-ul "myJurnal" este ideea mea proprie,un site in care iti spui parerea despre ziua pe care ai avut o astazi si cum te astepti ca ziua de maine sa fie.Tinand un streak te va ambitiona mai mult sa continui sa folosesti aplicatia si sa te dezvolti. 
