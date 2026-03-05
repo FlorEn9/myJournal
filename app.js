@@ -79,7 +79,7 @@ function main() {
   document.getElementById("todayStatusPill").textContent = done ? "Completat" : "Necompletat";
   document.getElementById("todayStatusText").textContent = done ? "Ai entry azi ✅" : "Nu ai entry azi ⏳";
   document.getElementById("primaryCta").textContent = done ? "Editează entry-ul de azi" : "+ Adaugă entry-ul de azi";
-  document.getElementById("primaryCta").href = "new.html";
+  document.getElementById("primaryCta").href = "add.html";
 
   // Avg 7 days
   const avg = averageLast7(entries);
