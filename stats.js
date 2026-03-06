@@ -220,6 +220,11 @@ function main() {
     document.getElementById("tenDate").textContent = "—";
     document.getElementById("tenText").textContent = "Nu există încă o zi de 10/10.";
   }
+    const debugEl = document.getElementById("debugInfo");
+  if (debugEl) {
+    const tens = entries.filter(e => parseInt(String(e.score).trim(), 10) === 10);
+    debugEl.textContent = `Total entries: ${entries.length} | Zile 10/10: ${tens.length} | Ultima zi 10/10: ${tens.sort((a,b)=>b.date.localeCompare(a.date))[0]?.date || "—"}`;
+  }
 }
 
 main();
