@@ -237,5 +237,20 @@ a{color:inherit; text-decoration:none}
 @media (max-width: 900px){
   .formRow{ grid-template-columns: 1fr; }
 }
+.gridSettings{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:12px;
+}
+
+.divider{
+  height:1px;
+  background: rgba(255,255,255,0.08);
+  margin:12px 0;
+}
+
+@media (max-width: 900px){
+  .gridSettings{ grid-template-columns: 1fr; }
+}
 .appname{font-weight:800; font-size:18px;}
 .subtitle{font-size:13px; color:var(--muted)}
