@@ -62,6 +62,7 @@ function main() {
 
   // default: azi
   dateInput.value = toISODate(new Date());
+  dateInput.disabled = true; // nu poți selecta altă dată
 
   function refreshFormForDate() {
     const entries = loadEntries();
