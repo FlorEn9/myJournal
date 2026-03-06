@@ -68,20 +68,36 @@ function main() {
     const date = dateInput.value;
     const existing = findEntryByDate(entries, date);
 
-    if (existing) {
-      scoreInput.value = existing.score ?? "";
-      textInput.value = existing.text ?? "";
-      tomorrowInput.value = existing.tomorrow ?? "";
-      deleteBtn.style.display = "inline-block";
-      document.getElementById("saveBtn").textContent = "Salvează modificările";
-      showStatus("Entry existent încărcat (editare).");
-    } else {
-      scoreInput.value = "";
-      textInput.value = "";
-      tomorrowInput.value = "";
-      deleteBtn.style.display = "none";
-      document.getElementById("saveBtn").textContent = "Salvează";
-    }
+ if (existing) {
+  scoreInput.value = existing.score ?? "";
+  textInput.value = existing.text ?? "";
+  tomorrowInput.value = existing.tomorrow ?? "";
+
+  // LOCK: nu mai poți edita după salvare
+  scoreInput.disabled = true;
+  textInput.disabled = true;
+  tomorrowInput.disabled = true;
+  dateInput.disabled = true;
+
+  deleteBtn.style.display = "inline-block";
+  document.getElementById("saveBtn").style.display = "none";
+
+  showStatus("Entry salvat ✅ (blocat, nu mai poate fi modificat).");
+} else {
+  scoreInput.value = "";
+  textInput.value = "";
+  tomorrowInput.value = "";
+
+  // UNLOCK pentru o zi nouă
+  scoreInput.disabled = false;
+  textInput.disabled = false;
+  tomorrowInput.disabled = false;
+  dateInput.disabled = true; // rămâne blocat (vezi punctul 2)
+
+  deleteBtn.style.display = "none";
+  document.getElementById("saveBtn").style.display = "inline-block";
+  document.getElementById("saveBtn").textContent = "Salvează";
+}
   }
 
   dateInput.addEventListener("change", refreshFormForDate);
