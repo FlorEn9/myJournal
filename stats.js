@@ -35,14 +35,4 @@
   line-height:1.45;
   white-space: pre-wrap;
 }
-function getLastTenDay(entries) {
-  const sorted = [...entries]
-    .filter(e => e && e.date)
-    .sort((a,b) => b.date.localeCompare(a.date));
 
-  for (const e of sorted) {
-    const s = parseInt(String(e.score).trim(), 10);
-    if (s === 10) return e;
-  }
-  return null;
-}
