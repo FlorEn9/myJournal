@@ -337,3 +337,34 @@ textarea.textarea{
 #scoreInput + .hint{
   display:none !important;
 }
+/* === ULTRA COMPACT pentru Data + Notă === */
+.formRow{ gap: 6px !important; }
+.field{ gap: 3px !important; }
+
+.label{
+  font-size: 11px !important;
+  margin-bottom: 0 !important;
+}
+
+.hint{
+  font-size: 10px !important;
+  margin-top: 0 !important;
+  line-height: 1.1 !important;
+}
+
+/* Input-urile efectiv */
+#dateInput, #scoreInput{
+  height: 24px !important;     /* sub 24px începe să arate prost la date */
+  padding: 2px 6px !important;
+  font-size: 11px !important;
+  border-radius: 7px !important;
+}
+
+/* Scoate hint-ul de sub Data/Notă ca să câștigi mult spațiu */
+#dateInput + .hint,
+#scoreInput + .hint{
+  display:none !important;
+}
+
+/* Mai mic și padding-ul cardului care ține form-ul */
+.card{ padding: 10px !important; }
