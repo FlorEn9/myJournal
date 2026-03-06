@@ -316,3 +316,8 @@ textarea.textarea{
   line-height: 1.2 !important;
   border-radius: 8px !important;
 }
+/* TEST: dacă vezi roșu, CSS se aplică */
+#dateInput, #scoreInput{
+  background: red !important;
+  color: white !important;
+}
