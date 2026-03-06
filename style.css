@@ -321,3 +321,19 @@ function getLastTenDay(entries) {
 .label{
   font-size: 11px;
 }
+/* Force: input-uri mai joase (Data + Notă) */
+input.input{
+  height: 38px;
+  padding: 6px 10px;
+  font-size: 14px;
+  line-height: 1.2;
+  border-radius: 10px;
+}
+
+/* Dacă și textarea ți se pare mare */
+textarea.textarea{
+  padding: 8px 10px;
+  font-size: 14px;
+  line-height: 1.35;
+  border-radius: 10px;
+}
