@@ -1,6 +1,6 @@
 // === 1) Pune aici datele din Supabase Project Settings → API ===
-const SUPABASE_URL = "PASTE_SUPABASE_URL_HERE";
-const SUPABASE_ANON_KEY = "PASTE_SUPABASE_ANON_KEY_HERE";
+const SUPABASE_URL = "https://ahntqqwdupfcjqaiptyp.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_oi42eMSb4RyB8w0zZcfFRg_Ht2NO9UK";
 
 // localStorage key (pentru export/import)
 const STORAGE_KEY = "journal_entries_v1";
