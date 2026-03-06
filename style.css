@@ -310,10 +310,30 @@ textarea.textarea{
 }
 /* FORCE micșorare pentru exact aceste 2 căsuțe (Data + Notă) */
 #dateInput, #scoreInput{
-  height: 14px !important;
+  height: 28px !important;
   padding: 3px 7px !important;
   font-size: 11px !important;
   line-height: 1.2 !important;
   border-radius: 8px !important;
 }
+/* Micșorează blocurile Data + Notă (spațiul din jur) */
+.formRow{ gap: 8px !important; }          /* mai mic între coloane */
+.field{ gap: 4px !important; }            /* mai mic între label/input/hint */
+.hint{ font-size: 11px !important; margin-top: 2px !important; }
 
+/* Scoate extra spațiu de la label */
+.label{ margin-bottom: 2px !important; }
+
+/* Inputurile rămân mici */
+#dateInput, #scoreInput{
+  height: 28px !important;                /* 14px e prea mic și arată ciudat */
+  padding: 4px 8px !important;
+  font-size: 12px !important;
+  border-radius: 8px !important;
+}
+
+/* (Opțional) dacă vrei chiar mai compact: ascunde hint-urile doar la Data/Notă */
+#dateInput + .hint,
+#scoreInput + .hint{
+  display:none !important;
+}
