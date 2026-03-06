@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Adaugă • myJurnal</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <img class="logoImg" src="SashamyJurnal.png" alt="Sasha" />
+      <div>
+        <div class="appname">myJurnal</div>
+        <div class="subtitle">Notează-ți ziua. Învață din trend.</div>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <a href="index.html" class="navlink">Acasă</a>
+      <a href="add.html" class="navlink active">Adaugă</a>
+      <a href="history.html" class="navlink">Istoric</a>
+      <a href="stats.html" class="navlink">Statistici</a>
+      <a href="settings.html" class="navlink">Setări</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <h1>Adaugă entry</h1>
+        <p class="muted">Completează ziua de azi (sau alege altă dată). Un entry pe zi.</p>
+      </div>
+
+      <div class="heroActions">
+        <a class="btn" href="history.html">Vezi istoricul</a>
+      </div>
+    </section>
+
+    <section class="card">
+      <form id="entryForm" class="form">
+        <div class="formRow">
+          <div class="field">
+            <label class="label" for="dateInput">Data</label>
+            <input class="input" id="dateInput" type="date" required />
+            <div class="hint muted">Dacă există deja entry pentru data asta, îl vei edita.</div>
+          </div>
+
+          <div class="field">
+            <label class="label" for="scoreInput">Notă (1–10)</label>
+            <input class="input" id="scoreInput" type="number" min="1" max="10" step="1" required placeholder="ex: 8" />
+            <div class="hint muted">Fii consistent, ajută la grafice.</div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label" for="textInput">Cum a fost ziua?</label>
+          <textarea class="textarea" id="textInput" rows="5" placeholder="Scrie pe scurt ce s-a întâmplat azi..."></textarea>
+        </div>
+
+        <div class="field">
+          <label class="label" for="tomorrowInput">Aspirații pentru mâine</label>
+          <textarea class="textarea" id="tomorrowInput" rows="4" placeholder="Ce vrei să faci mâine?"></textarea>
+        </div>
+
+        <div class="formActions">
+          <button type="submit" class="btn primary" id="saveBtn">Salvează</button>
+          <button type="button" class="btn danger" id="deleteBtn" style="display:none;">Șterge entry</button>
+          <span class="muted" id="statusMsg"></span>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span class="muted">© <span id="year">—</span> FlorEn • All rights reserved</span>
+  </footer>
+
+  <script src="add.js"></script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Setări • myJurnal</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <img class="logoImg" src="Sasha.jpg" alt="Sasha" />
+      <div>
+        <div class="appname">myJurnal</div>
+        <div class="subtitle">Notează-ți ziua. Învață din trend.</div>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <a href="index.html" class="navlink">Acasă</a>
+      <a href="add.html" class="navlink">Adaugă</a>
+      <a href="history.html" class="navlink">Istoric</a>
+      <a href="stats.html" class="navlink">Statistici</a>
+      <a href="settings.html" class="navlink active">Setări</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <h1>Setări</h1>
+        <p class="muted">Aici vei avea contul (Register/Login) + opțiuni precum export/import.</p>
+      </div>
+    </section>
+
+    <section class="gridSettings">
+      <article class="card">
+        <div class="cardTop">
+          <h2>Cont</h2>
+          <span class="pill" id="authStatusPill">Neautentificat</span>
+        </div>
+
+        <div class="muted small" style="margin-top:8px;">
+          Status: <span id="authStatusText">Nu ești logat.</span><br />
+          Email: <span id="authEmail">—</span>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="field">
+          <label class="label" for="emailInput">Email</label>
+          <input class="input" id="emailInput" type="email" placeholder="ex: florin@gmail.com" />
+        </div>
+
+        <div class="field">
+          <label class="label" for="passInput">Parolă</label>
+          <input class="input" id="passInput" type="password" placeholder="minim 6 caractere" />
+        </div>
+
+        <div class="formActions" style="margin-top:10px;">
+          <button class="btn primary" id="registerBtn" type="button">Register</button>
+          <button class="btn" id="loginBtn" type="button">Login</button>
+          <button class="btn danger" id="logoutBtn" type="button" style="display:none;">Logout</button>
+          <span class="muted" id="authMsg"></span>
+        </div>
+
+        <div class="muted small" style="margin-top:10px;">
+          Notă: dacă Supabase are “Email confirmation” activ, la Register vei primi email de confirmare.
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="cardTop">
+          <h2>Date</h2>
+          <span class="pill">Local + Cloud</span>
+        </div>
+
+        <p class="muted" style="margin-top:10px;">
+          În viitor: export/import + migrare din localStorage în cloud.
+        </p>
+
+        <div class="formActions" style="margin-top:10px;">
+          <button class="btn" id="exportBtn" type="button">Export (JSON)</button>
+          <button class="btn" id="importBtn" type="button">Import (JSON)</button>
+          <input id="importFile" type="file" accept="application/json" style="display:none;" />
+        </div>
+
+        <p class="muted small" id="dataMsg" style="margin-top:10px;"></p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span class="muted">© <span id="year">—</span> FlorEn • All rights reserved</span>
+  </footer>
+
+  <!-- Supabase CDN (ne trebuie pentru auth) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="settings.js"></script>
+</body>
+</html>

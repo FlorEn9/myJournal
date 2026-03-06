@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Statistici • myJurnal</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <img class="logoImg" src="SashamyJurnal.png" alt="Sasha" />
+      <div>
+        <div class="appname">myJurnal</div>
+        <div class="subtitle">Notează-ți ziua. Învață din trend.</div>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <a href="index.html" class="navlink">Acasă</a>
+      <a href="add.html" class="navlink">Adaugă</a>
+      <a href="history.html" class="navlink">Istoric</a>
+      <a href="stats.html" class="navlink active">Statistici</a>
+      <a href="settings.html" class="navlink">Setări</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <h1>Statistici</h1>
+        <p class="muted">Grafice pe săptămână, lună și an + ultima zi de 10/10.</p>
+      </div>
+      <div class="heroActions">
+        <a class="btn primary" href="add.html">+ Adaugă entry</a>
+      </div>
+    </section>
+
+    <section class="gridStats">
+      <article class="card">
+        <div class="cardTop">
+          <h2>Grafic săptămânal (ultimele 7 zile)</h2>
+          <span class="pill" id="weekPill">—</span>
+        </div>
+        <canvas id="weekChart" class="chart" width="960" height="260"></canvas>
+        <p class="muted small">Arată nota pe ultimele 7 zile (zilele lipsă apar ca gol).</p>
+      </article>
+
+      <article class="card">
+        <div class="cardTop">
+          <h2>Grafic lunar (luna curentă)</h2>
+          <span class="pill" id="monthPill">—</span>
+        </div>
+        <canvas id="monthChart" class="chart" width="960" height="260"></canvas>
+        <p class="muted small">Arată nota pe fiecare zi din luna curentă.</p>
+      </article>
+
+      <article class="card">
+        <div class="cardTop">
+          <h2>Grafic anual (anul curent)</h2>
+          <span class="pill" id="yearPill">—</span>
+        </div>
+        <canvas id="yearChart" class="chart" width="960" height="260"></canvas>
+        <p class="muted small">Media notelor pe fiecare lună din anul curent.</p>
+      </article>
+
+      <article class="card">
+        <div class="cardTop">
+          <h2>Last 10/10 day</h2>
+          <span class="pill" id="tenPill">—</span>
+        </div>
+
+        <div class="tenBox">
+          <div class="tenDate" id="tenDate">—</div>
+          <div class="tenText muted" id="tenText">Nu există încă o zi de 10/10.</div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span class="muted">© <span id="year">—</span> FlorEn • All rights reserved</span>
+  </footer>
+
+  <script src="stats.js"></script>
+</body>
+  <div class="card" style="margin-top:12px;">
+  <div class="cardTop">
+    <h2>Debug</h2>
+    <span class="pill">localStorage</span>
+  </div>
+  <p class="muted small" id="debugInfo">—</p>
+</div>
+</html>
