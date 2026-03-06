@@ -303,3 +303,21 @@ function getLastTenDay(entries) {
 
 .appname{font-weight:800; font-size:18px;}
 .subtitle{font-size:13px; color:var(--muted)}
+/* Input-uri mai mici (Data + Nota) */
+.input{
+  padding: 7px 10px;     /* reduce înălțimea */
+  font-size: 14px;       /* text mai mic */
+  border-radius: 10px;
+}
+
+/* (Opțional) și textarea mai compactă */
+.textarea{
+  padding: 8px 10px;
+  font-size: 14px;
+  border-radius: 10px;
+}
+
+/* (Opțional) label puțin mai mic */
+.label{
+  font-size: 11px;
+}
