@@ -121,31 +121,47 @@ function calcPreviousStreak(entries) {
   const set = new Set(entries.map(e => e.date));
   if (set.size === 0) return 0;
 
-  const active = calcActiveStreak(entries);
+  const dates = Array.from(set).sort(); // crescător
+  if (dates.length === 0) return 0;
 
-  // dacă NU ai streak activ azi, "ultima serie" e seria cea mai recentă
-  if (active === 0) return calcLastStreak(entries);
+  const todayIso = toISODate(new Date());
 
-  // startul streak-ului curent
-  const start = new Date();
-  start.setDate(start.getDate() - (active - 1));
+  // Dacă ai streak activ azi, căutăm seria încheiată anterioară
+  // Dacă nu ai streak activ, căutăm chiar ultima serie încheiată
+  let endDate;
 
-  // ziua înainte de start
-  const prevEnd = new Date(start);
-  prevEnd.setDate(prevEnd.getDate() - 1);
+  if (set.has(todayIso)) {
+    const active = calcActiveStreak(entries);
 
-  // IMPORTANT: dacă există entry în ziua de dinainte, nu există pauză,
-  // deci nu avem o "seria precedentă" separată
-  if (set.has(toISODate(prevEnd))) return 0;
+    // începutul streak-ului curent
+    const startCurrent = new Date();
+    startCurrent.setDate(startCurrent.getDate() - (active - 1));
 
-  // altfel numărăm seria precedentă de la ultima zi completată înainte de pauză
+    // seria anterioară trebuie să se termine înainte de ziua de pauză
+    endDate = new Date(startCurrent);
+    endDate.setDate(endDate.getDate() - 2);
+  } else {
+    // ultima serie încheiată se termină la cea mai recentă zi completată
+    endDate = new Date(dates[dates.length - 1]);
+  }
+
+  // găsim cea mai apropiată zi completată <= endDate
+  while (!set.has(toISODate(endDate))) {
+    endDate.setDate(endDate.getDate() - 1);
+
+    // siguranță: dacă am mers prea mult înapoi și nu găsim nimic
+    if (endDate < new Date(dates[0])) return 0;
+  }
+
+  // numărăm seria care se termină în endDate
   let streak = 0;
   while (true) {
-    prevEnd.setDate(prevEnd.getDate() - 1);
-    const iso = toISODate(prevEnd);
+    const iso = toISODate(endDate);
     if (!set.has(iso)) break;
     streak += 1;
+    endDate.setDate(endDate.getDate() - 1);
   }
+
   return streak;
 }
 main();
