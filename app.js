@@ -117,5 +117,33 @@ function main() {
   document.getElementById("lastScore").textContent = last ? String(last.score) : "—";
   document.getElementById("lastDatePill").textContent = last ? last.date : "—";
 }
+function calcPreviousStreak(entries) {
+  const set = new Set(entries.map(e => e.date));
+  if (set.size === 0) return 0;
 
+  const active = calcActiveStreak(entries);
+  if (active === 0) {
+    // dacă nu ai streak activ, "ultima serie" e chiar seria cea mai recentă
+    return calcLastStreak(entries);
+  }
+
+  // Ai streak activ. Găsim ziua de START a streak-ului curent:
+  // start = azi - (active-1) zile
+  const start = new Date();
+  start.setDate(start.getDate() - (active - 1));
+
+  // ziua înainte de start (aici trebuie să fie gap)
+  const prevEnd = new Date(start);
+  prevEnd.setDate(prevEnd.getDate() - 1);
+
+  // dacă nu există entry în prevEnd, ok; începem să numărăm înapoi de la prevEnd
+  let streak = 0;
+  while (true) {
+    const iso = toISODate(prevEnd);
+    if (!set.has(iso)) break;
+    streak += 1;
+    prevEnd.setDate(prevEnd.getDate() - 1);
+  }
+  return streak;
+}
 main();
