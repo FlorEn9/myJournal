@@ -16,14 +16,12 @@ function loadEntries() {
   }
 }
 
-// Simplu: streak = zile consecutive de la ultima zi completată înapoi
 function calcStreak(entries) {
-  const set = new Set(entries.map(e => e.date)); // date = YYYY-MM-DD
+  const set = new Set(entries.map(e => e.date));
   if (set.size === 0) return 0;
 
-  // găsim cea mai recentă zi
-  const sorted = Array.from(set).sort(); // crescător
-  let cur = new Date(sorted[sorted.length - 1]);
+  // streak ACTIV: trebuie să ai entry azi, altfel 0
+  let cur = new Date();
   let streak = 0;
 
   while (true) {
