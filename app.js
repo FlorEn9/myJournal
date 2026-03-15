@@ -122,27 +122,29 @@ function calcPreviousStreak(entries) {
   if (set.size === 0) return 0;
 
   const active = calcActiveStreak(entries);
-  if (active === 0) {
-    // dacă nu ai streak activ, "ultima serie" e chiar seria cea mai recentă
-    return calcLastStreak(entries);
-  }
 
-  // Ai streak activ. Găsim ziua de START a streak-ului curent:
-  // start = azi - (active-1) zile
+  // dacă NU ai streak activ azi, "ultima serie" e seria cea mai recentă
+  if (active === 0) return calcLastStreak(entries);
+
+  // startul streak-ului curent
   const start = new Date();
   start.setDate(start.getDate() - (active - 1));
 
-  // ziua înainte de start (aici trebuie să fie gap)
+  // ziua înainte de start
   const prevEnd = new Date(start);
   prevEnd.setDate(prevEnd.getDate() - 1);
 
-  // dacă nu există entry în prevEnd, ok; începem să numărăm înapoi de la prevEnd
+  // IMPORTANT: dacă există entry în ziua de dinainte, nu există pauză,
+  // deci nu avem o "seria precedentă" separată
+  if (set.has(toISODate(prevEnd))) return 0;
+
+  // altfel numărăm seria precedentă de la ultima zi completată înainte de pauză
   let streak = 0;
   while (true) {
+    prevEnd.setDate(prevEnd.getDate() - 1);
     const iso = toISODate(prevEnd);
     if (!set.has(iso)) break;
     streak += 1;
-    prevEnd.setDate(prevEnd.getDate() - 1);
   }
   return streak;
 }
