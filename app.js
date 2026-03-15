@@ -92,7 +92,7 @@ function main() {
 
   // Streaks
   const activeStreak = calcActiveStreak(entries);
-  const lastStreak = calcLastStreak(entries);
+  const lastStreak = calcPreviousStreak(entries);
 
   document.getElementById("streakValue").textContent = String(activeStreak);
   document.getElementById("streakPill").textContent = `${activeStreak} zile`;
