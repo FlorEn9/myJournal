@@ -16,9 +16,14 @@ function loadEntries() {
   }
 }
 
-function calcStreak(entries) {
-  const set = new Set(entries.map(e => e.date));
-  if (set.size === 0) return 0;
+const activeStreak = calcActiveStreak(entries);
+const lastStreak = calcLastStreak(entries);
+
+document.getElementById("streakValue").textContent = String(activeStreak);
+document.getElementById("streakPill").textContent = `${activeStreak} zile`;
+
+// nou: ultima serie
+document.getElementById("lastStreakText").textContent = `Ultima serie: ${lastStreak} zile`;
 
   // streak ACTIV: trebuie să ai entry azi, altfel 0
   let cur = new Date();
@@ -88,6 +93,46 @@ function main() {
   const last = getLastEntry(entries);
   document.getElementById("lastScore").textContent = last ? String(last.score) : "—";
   document.getElementById("lastDatePill").textContent = last ? last.date : "—";
+}
+function calcActiveStreak(entries) {
+  const set = new Set(entries.map(e => e.date));
+  if (set.size === 0) return 0;
+
+  // streak ACTIV: trebuie să ai entry azi
+  let cur = new Date();
+  let streak = 0;
+
+  while (true) {
+    const iso = toISODate(cur);
+    if (!set.has(iso)) break;
+    streak += 1;
+    cur.setDate(cur.getDate() - 1);
+  }
+  return streak;
+}
+
+function calcLastStreak(entries) {
+  const set = new Set(entries.map(e => e.date));
+  if (set.size === 0) return 0;
+
+  // dacă azi ai entry, "last streak" e tot active streak
+  const todayIso = toISODate(new Date());
+  let start = new Date();
+
+  if (!set.has(todayIso)) {
+    // caută cea mai recentă zi completată
+    const dates = Array.from(set).sort(); // crescător
+    start = new Date(dates[dates.length - 1]);
+  }
+
+  let streak = 0;
+  while (true) {
+    const iso = toISODate(start);
+    if (!set.has(iso)) break;
+    streak += 1;
+    start.setDate(start.getDate() - 1);
+  }
+  return streak;
 }
 
 main();
